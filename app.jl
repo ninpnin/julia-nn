@@ -26,7 +26,6 @@ function y_hat(x)
 	x
 end
 
-batch_size = 16
-x_0 = rand(16, D)
-print(y_hat.(x_0))
+x_0 = rand(D)
+print(y_hat(x_0))
 #y_hat(W1, W2, b1, b2, x)
