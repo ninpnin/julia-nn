@@ -9,13 +9,12 @@ relu(x) = max(0, x)
 layer(W, b, activation, x) = activation.(linear(W, b, x))
 
 
-D = 4
-L = 3
+L = [3, 5, 2]
 weights = []
 
-for l in 0:L
-	W_0 = rand(D,D) - ones(D,D) * 0.5
-	b_0 = rand(D) - ones(D) * 0.5
+for (D_i, D_i1) in zip(L[1:length(L)-1], L[2:length(L)])
+	W_0 = rand(D_i1,D_i) - ones(D_i1,D_i) * 0.5
+	b_0 = rand(D_i1) - ones(D_i1) * 0.5
 	push!(weights,(W_0, b_0))
 end
 
@@ -26,6 +25,6 @@ function y_hat(x)
 	x
 end
 
-x_0 = rand(D)
+x_0 = rand(L[1])
 print(y_hat(x_0))
 #y_hat(W1, W2, b1, b2, x)
